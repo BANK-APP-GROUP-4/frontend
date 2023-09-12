@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 const RegisterUser= () => {
     const config = {
@@ -75,6 +76,8 @@ const RegisterUser= () => {
     };
 
     return (
+        <div>
+ <h2>Register</h2>
         <form onSubmit={submitActionHandler}>
             <label>fname:</label>
             <input type="text" value={fname} onChange={fnameChangeHandler}></input>
@@ -101,7 +104,12 @@ const RegisterUser= () => {
             <input type="text" value={phno} onChange={phnoChangeHandler}></input>
 
             <button type="submit">submit</button>
+            <div>
+                <Link to="/">Home</Link>
+            </div>
         </form>
+        </div>
+     
     );
 };
 
