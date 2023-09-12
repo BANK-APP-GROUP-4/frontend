@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter , Route, Routes} from 'react-router-dom';
 import RegisterUser from './screens/RegisterScreen';
 import LoginScreen from "./screens/LoginScreen";
-import CustomerDashboard from "./screens/customerDashboard";
+import CustomerDashboard from "./screens/CustomerDashboard";
 
 
 function App() {
