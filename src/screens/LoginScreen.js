@@ -16,6 +16,7 @@ const LoginForm = () => {
       if (response.status === "success") {
         localStorage.setItem('customer_token', response.token);
         localStorage.setItem('customer_details', JSON.stringify(response.customer_details));
+        localStorage.setItem('account_details', JSON.stringify(response.account_details));
         window.location.href = '/customer/dashboard';
       }
       else{

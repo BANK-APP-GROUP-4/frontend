@@ -7,10 +7,11 @@ const CustomerDashboard = () => {
         LogoutService.logout();
     }
     const customer_details = JSON.parse(localStorage.getItem('customer_details'));
+    const account_details = JSON.parse(localStorage.getItem('account_details'));
     if (!localStorage.getItem('customer_token')) {
         window.location.href = '/customer/login';
     }
-    const accountStatus = customer_details.accountStatus;
+    const accountStatus = account_details.accountNumber ? "Active" : "Inactive";
     return (
         <div className="container">
             <button style={
@@ -26,8 +27,8 @@ const CustomerDashboard = () => {
                 <div style={{border: "1px solid black", width: "50%", margin: "5rem", padding: "2rem"}}>
                 <h1>Account Details</h1>
                     <div style={{display: "flex", flexDirection: "column"}}>
-                    <span>Account Number: </span>
-                    <span>Account Balance: </span>
+                    <span>Account Number:&nbsp; <b>{account_details.accountNumber ? account_details.accountNumber : "Not Available"} </b></span>
+                    <span>Account Balance: &nbsp; <b>{account_details.Balance ? account_details.Balance : "Not Available"}</b></span>
                     </div>
                 </div>
                 <div>
