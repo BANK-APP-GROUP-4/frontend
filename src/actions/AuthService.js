@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'http://localhost:4000';
 
-const AuthService = {
+export const LoginService = {
   login: async (username, password) => {
     try {
       const response = await axios.post(`${BASE_URL}/login`, {
@@ -16,4 +16,11 @@ const AuthService = {
   },
 };
 
-export default AuthService;
+export const LogoutService = {
+  logout: () => {
+    localStorage.clear();
+    window.location.href = '/customer/login';
+  },
+};
+
+
