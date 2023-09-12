@@ -1,9 +1,8 @@
-
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter , Route, Routes} from 'react-router-dom';
-import RegisterUser from './Screens/RegisterUser';
+import RegisterUser from './screens/RegisterScreen';
 import LoginScreen from "./screens/LoginScreen";
+import CustomerDashboard from "./screens/customerDashboard";
 
 
 function App() {
@@ -11,9 +10,9 @@ function App() {
     <div className="App">
       <BrowserRouter> 
       <Routes>
-        <Route exact path='/' element={<RegisterUser/>}/>
-        <Route path="/login" element={<LoginScreen />} />
-
+        <Route exact path='/customer/register' element={<RegisterUser/>}/>
+        <Route path="/customer/login" element={<LoginScreen />} />
+        <Route path="/customer/dashboard" element={<CustomerDashboard />} />
       </Routes>
       </BrowserRouter>
     </div>
