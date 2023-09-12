@@ -1,15 +1,24 @@
-import React from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+
+import logo from './logo.svg';
+import './App.css';
+import { BrowserRouter , Route, Routes} from 'react-router-dom';
+import RegisterUser from './Screens/RegisterUser';
 import LoginScreen from "./screens/LoginScreen";
+
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className="App">
+      <BrowserRouter> 
       <Routes>
+        <Route exact path='/' element={<RegisterUser/>}/>
         <Route path="/login" element={<LoginScreen />} />
+
       </Routes>
-    </BrowserRouter>
-  );
+      </BrowserRouter>
+    </div>
+);
 }
+
 
 export default App;
