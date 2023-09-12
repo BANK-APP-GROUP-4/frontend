@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import AuthService from '../actions/AuthService';
+import { Link } from 'react-router-dom';
+import {LoginService} from '../actions/AuthService';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -11,14 +12,14 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await AuthService.login(username, password);
+      const response = await LoginService.login(username, password);
       if (response.status === "success") {
         localStorage.setItem('customer_token', response.token);
         localStorage.setItem('customer_details', JSON.stringify(response.customer_details));
         window.location.href = '/customer/dashboard';
       }
       else{
-        console.log(response.message);
+        alert(response.message);
       }
       
     } catch (error) {
@@ -44,6 +45,9 @@ const LoginForm = () => {
         />
         <button type="submit">Login</button>
       </form>
+      <div>
+                <Link to="/">Home</Link>
+            </div>
     </div>
   );
 };
