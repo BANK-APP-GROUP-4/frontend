@@ -2,8 +2,19 @@ import React, { useState } from "react";
 import { Form, useNavigate } from "react-router-dom";
 import axios from "axios";
 const RegisterUser= () => {
-    // const baseURL = "http://localhost:9080/saveUser" - need to confirm localhost
-    // const navigate = useNavigate();
+    const config = {
+
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            "Access-Control-Allow-Origin" : "http://localhost:3001/register",
+            "Allow": "POST",
+            "Content-type": "Application/json",
+    
+        
+        }
+    };
+    const baseURL = "http://localhost:8081/api/v1/customer/add";
+    const navigate = useNavigate();
     const [fname,setFname] = useState('');
     const [lname,setLname] = useState('');
     const [address,setAddress] = useState('');
@@ -12,6 +23,7 @@ const RegisterUser= () => {
     const [email,setEmail] = useState('');
     const [gender,setGender] = useState('');
     const [phno,setPhno] = useState('');
+    
 
     const fnameChangeHandler = (event) => {
         setFname(event.target.value);
@@ -38,31 +50,32 @@ const RegisterUser= () => {
         setPhno(event.target.value);
     };
 
-
-    // const submitActionHandler = (event) => {
-
-    //     event.preventDefault();
-    //     axios.post(baseURL,{
-    //         firstName : fname,
-    //         lastname : lname,
-    //         address : address,
-    //         password : pass,
-    //         email : email,
-    //         age : age,
-    //         gender : gender,
-    //         phonenumber : phno
-    //     })
-    //     .then((response) => {
-    //         alert(response.data.fname);
-    //         alert("Customer" + fname  + "added");
-    //         navigate("/account");
-    //     }).catch(error => {
-    //         alert("error==="+error);
-    //     });
-    // };
+    
+    const submitActionHandler = (event) => {
+        var today = new Date().toISOString().substring(0,10)
+        console.log(today)
+        event.preventDefault();
+        axios.post(baseURL,{
+            firstName : fname,
+            lastName : lname,
+            address : address,
+            password : pass,
+            email : email,
+            age : age,
+            gender : gender,
+            mobileNumber : phno,
+            dateBecameCustomer : today
+        })
+        .then((response) => {
+            alert("Customer " + fname  + " added !");
+            // navigate("/account");
+        }).catch(error => {
+            alert("error==="+error);
+        });
+    };
 
     return (
-        <form>
+        <form onSubmit={submitActionHandler}>
             <label>fname:</label>
             <input type="text" value={fname} onChange={fnameChangeHandler}></input>
             <br></br>
@@ -87,7 +100,7 @@ const RegisterUser= () => {
             <label>phonenumber:</label>
             <input type="text" value={phno} onChange={phnoChangeHandler}></input>
 
-            <button type="submit"></button>
+            <button type="submit">submit</button>
         </form>
     );
 };
