@@ -6,7 +6,8 @@ import HomeScreen from "./screens/HomeScreen";
 import AccountDetails from "./screens/AccountDetails";
 import TransactionDetails from './screens/TransactionDetails';
 import CustomerDashboard from "./screens/CustomerDashboard";
-
+import TransferFunds from "./screens/TransferFunds";
+import AccountSummary from "./screens/AccountSummary";
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
         <Route exact path='/customer/register' element={<RegisterUser/>}/>
         <Route path="/customer/login" element={<LoginScreen />} />
         <Route path="/customer/dashboard" element={<CustomerDashboard />} />
-        <Route path="/customer/dashboard/account-details" element={<AccountDetails />} /> 
+        <Route path="/customer/account-details" element={<AccountDetails />} /> 
         <Route path="/customer/dashboard/transaction-details" element={<TransactionDetails />} /> 
-
+        <Route path="/customer/transfer-funds" element={<TransferFunds />} />
+        <Route path="/customer/account-summary" element={<AccountSummary />} />
       </Routes>
       </BrowserRouter>
     </div>

@@ -1,20 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { styled } from 'styled-components';
 const RegisterUser= () => {
-    const config = {
-
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            "Access-Control-Allow-Origin" : "http://localhost:3001/register",
-            "Allow": "POST",
-            "Content-type": "Application/json",
     
-        
-        }
-    };
     const baseURL = "http://localhost:8081/api/v1/customer/add";
     const navigate = useNavigate();
     const [fname,setFname] = useState('');
@@ -77,79 +66,41 @@ const RegisterUser= () => {
     };
 
     return (
-        <Container>
-        <div className="auth-form">
-        <h2>Register</h2>
-        <Form className="register-form" onSubmit={submitActionHandler}>
-            <Label>First Name:</Label>
-            <Input type="text" value={fname} onChange={fnameChangeHandler}></Input>
-            
-            <Label>Last name:</Label>
-            <Input type="text" value={lname} onChange={lnameChangeHandler}></Input>
-            
-            <Label>Address:</Label>
-            <Input type="text" value={address} onChange={addressChangeHandler}></Input>
-            
-            <Label>Password:</Label>
-            <Input type="password" value={pass} onChange={passChangeHandler}></Input>
-            
-            <Label>Email:</Label>
-            <Input type="email" value={email} onChange={emailChangeHandler}></Input>
-            
-            <Label>Age:</Label>
-            <Input type="number" value={age} onChange={ageChangeHandler}></Input>
-            
-            <Label>Gender:</Label>
-            <Input type="text" value={gender} onChange={genderChangeHandler}></Input>
-            
-            <Label>Phone Number:</Label>
-            <Input type="text" value={phno} onChange={phnoChangeHandler}></Input>
+        <div>
+ <h2>Register</h2>
+        <form onSubmit={submitActionHandler}>
+            <label>fname:</label>
+            <input type="text" value={fname} onChange={fnameChangeHandler}></input>
             <br></br>
-            <FormButton type="submit">Register</FormButton>
+            <label>lname:</label>
+            <input type="text" value={lname} onChange={lnameChangeHandler}></input>
             <br></br>
+            <label>Address:</label>
+            <input type="text" value={address} onChange={addressChangeHandler}></input>
+            <br></br>
+            <label>password:</label>
+            <input type="password" value={pass} onChange={passChangeHandler}></input>
+            <br></br>
+            <label>email:</label>
+            <input type="email" value={email} onChange={emailChangeHandler}></input>
+            <br></br>
+            <label>age:</label>
+            <input type="number" value={age} onChange={ageChangeHandler}></input>
+            <br></br>
+            <label>Gender:</label>
+            <input type="text" value={gender} onChange={genderChangeHandler}></input>
+            <br></br>
+            <label>phonenumber:</label>
+            <input type="text" value={phno} onChange={phnoChangeHandler}></input>
+
+            <button type="submit">submit</button>
             <div>
-                <Link to="/customer/login">Already have an account? Login here.</Link>
+                <Link to="/">Home</Link>
             </div>
-        </Form>
+        </form>
         </div>
-     </Container>
+     
     );
 };
 
-const Container=styled.div`
-text-align: center;
-display: flex;
-min-height: 100vh;
-align-items: center;
-justify-content: center;
-background-image: linear-gradient(to right, #decba4,#3e5151);
-`;
-const Form=styled.form`
-display: flex;
-  flex-direction: column;
-`;
-const Input=styled.input`
-margin: 0.25rem 0;
-  padding: 1rem;
-  border:none;
-  border-radius: 10px;
-`;
-const Select=styled.select`
-margin: 0.25rem 0;
-  padding: 1rem;
-  border:none;
-  border-radius: 10px;
-`;
-const FormButton=styled.button`
-border: none;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-`;
-const Label=styled.label`
-text-align: left;
-  padding: 0.25rem 0;
-
-`;
 export default RegisterUser;

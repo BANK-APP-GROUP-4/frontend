@@ -1,15 +1,13 @@
-// logout component
-// on click clears the local storage and redirects to login page
 import React from 'react';
-import { LogoutService } from '../actions/AuthService';
+import { LogoutService } from '../actions/CustomerActions';
 
 const Logout = () => {
     const handleLogout = () => {
         LogoutService.logout();
     }
     return (
-        <div>
-            <button onClick={handleLogout}>Logout</button>
+        <div className='customer-top-navbar'>
+            <button className='logout-btn' onClick={handleLogout}>Logout</button>
         </div>
     );
 }

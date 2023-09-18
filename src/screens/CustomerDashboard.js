@@ -1,49 +1,54 @@
 import React, { useState } from 'react';
-import { LogoutService } from '../actions/AuthService';
+import { LogoutService } from '../actions/CustomerActions';
 import { Link } from 'react-router-dom';
+import CustomerNavbar from '../components/CustomerNavbar';
+import {CustomerDetailsService} from '../actions/CustomerActions';
+import Logout from '../components/Logout';
+import SummaryPNG from "../assets/summary.png";
+import TransferPNG from "../assets/transfer.png";
+import Footer from '../components/Footer';
 
 const CustomerDashboard = () => {
+    // const auth_token = localStorage.getItem('customer_token');
+    // if(!auth_token){
+    //     window.location.href = '/customer/login';
+    // }
+    // else {
+    //     const customer_details = CustomerDetailsService.getCustomerDetails(auth_token);
+    //     localStorage.setItem('customer_details', JSON.stringify(customer_details.customer_details));
+    // }
     const handleLogout = () => {
         LogoutService.logout();
     }
-    const customer_details = JSON.parse(localStorage.getItem('customer_details'));
-    const account_details = JSON.parse(localStorage.getItem('account_details'));
-    if (!localStorage.getItem('customer_token')) {
-        window.location.href = '/customer/login';
-    }
-    const accountStatus = account_details.accountNumber ? "Active" : "Inactive";
+    // const customer_details = JSON.parse(localStorage.getItem('customer_details'));
+    
     return (
-        <div className="container">
-            <button style={
-                {float: "right", margin: "2rem", padding: "1rem", backgroundColor: "red", color: "white", border: "5px solid red", borderRadius: "5px",
-            cursor: "pointer"
-            }
-            } onClick={handleLogout}>Logout</button>
-            <div className="row">
-                <div>
-                    <h1>Welcome {customer_details.name}</h1>
-                    <h3>Account Status: {accountStatus}</h3>
-                </div>
-                <div style={{border: "1px solid black", width: "50%", margin: "5rem", padding: "2rem"}}>
-                <h1>Account Details</h1>
-                    <div style={{display: "flex", flexDirection: "column"}}>
-                    <span>Account Number:&nbsp; <b>{account_details.accountNumber ? account_details.accountNumber : "Not Available"} </b></span>
-                    <span>Account Balance: &nbsp; <b>{account_details.Balance ? account_details.Balance : "Not Available"}</b></span>
-                    </div>
-                </div>
-                <div>
-                    <h1>
-                        <Link to="/customer/dashboard/account-details">Complete Account Details</Link>
-                    </h1>
-                    <h1>
-                        <Link to="/customer/dashboard/transaction-details">Complete Transaction Details</Link>
-                    </h1>
-                </div>
+        <div className="customer-dashboard-container">
+            <CustomerNavbar />
+            <div className='customer-greeting'>
+                <h2>Welcome,</h2>
+                <h4>Your Account Status is: </h4>
             </div>
-            {/* home */}
-            <div>
-                <Link to="/">Home</Link>
-            </div>
+            <div className='dashboard-card-container'>
+                {/* Available Balance, three cards summary, Transfer Money */}
+                <div className='dashboard-card dashboard-card-bal'>
+                    <h2>Available Balance</h2>
+                    <h3>Rs. 10000</h3>
+                </div>
+                <Link className='dashboard-card' to='/customer/account-summary'>
+                        <div className='dashboard-card-img'>
+                        <img className='dash-link-png' src={SummaryPNG} alt="Summary" />
+                        <h2>Account Summary</h2>
+                        </div>
+                </Link>
+                <Link className='dashboard-card' to='/customer/transfer-funds'>
+                        <div className='dashboard-card-img'>
+                        <img className='dash-link-png' src={TransferPNG} alt="Transfer" />
+                        <h2>Transfer Funds</h2>
+                        </div>
+                </Link>
+                </div>
+                <Footer />
         </div>
     )
 }
