@@ -35,6 +35,9 @@ const CustomerDashboard = () => {
                     <h1>
                         <Link to="/customer/dashboard/account-details">Complete Account Details</Link>
                     </h1>
+                    <h1>
+                        <Link to="/customer/dashboard/transaction-details">Complete Transaction Details</Link>
+                    </h1>
                 </div>
             </div>
             {/* home */}

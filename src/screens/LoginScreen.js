@@ -13,10 +13,13 @@ const LoginForm = () => {
 
     try {
       const response = await LoginService.login(username, password);
-      if (response.status === "success") {
+      console.log(response.transaction_details)
+      if (response.status === "Success") {
         localStorage.setItem('customer_token', response.token);
         localStorage.setItem('customer_details', JSON.stringify(response.customer_details));
         localStorage.setItem('account_details', JSON.stringify(response.account_details));
+        localStorage.setItem('transaction_details', JSON.stringify(response.transaction_details));
+        // console.log(response.transaction_details)
         window.location.href = '/customer/dashboard';
       }
       else{
