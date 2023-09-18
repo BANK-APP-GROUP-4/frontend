@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {LoginService} from '../actions/AuthService';
-
+import '../App.css';
+import { styled } from 'styled-components';
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -32,28 +33,68 @@ const LoginForm = () => {
   };
 
   return (
+    <Container>
     <div>
+      
+      <Form className="login-form" onSubmit={handleLogin}>
       <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
+        <Input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
+        <br></br>
+        <Input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
-      </form>
+       <br></br>
+        <FormButton className="forms-button" type="submit">Log In</FormButton>
+      </Form>
+      <br></br>
       <div>
-                <Link to="/">Home</Link>
-            </div>
+                <Link to="/customer/register">Don't have an account? Register here.</Link>
+      </div>
     </div>
+    </Container>
   );
 };
+
+const Container=styled.div`
+text-align: center;
+display: flex;
+min-height: 100vh;
+align-items: center;
+justify-content: center;  
+background-image: linear-gradient(to right, #decba4,#3e5151);
+`;
+
+const Form=styled.form`
+display: flex;
+  flex-direction: column;
+`;
+const Input=styled.input`
+margin: 0.25rem 0;
+  padding: 1rem;
+  border:none;
+  border-radius: 10px;
+`;
+const Select=styled.select`
+margin: 0.25rem 0;
+  padding: 1rem;
+  border:none;
+  border-radius: 10px;
+`;
+const FormButton=styled.button`
+border: none;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+`;
+
 
 export default LoginForm;
