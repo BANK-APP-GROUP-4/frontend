@@ -60,7 +60,7 @@ const RegisterUser = () => {
                     borderRadius: "10px",
                 }}
             >
-                <Typography variant="h4" style={{ fontWeight: "bold", marginBottom: "1rem", fontSize: "1.5rem" }}>
+                <Typography variant="h3" style={{ fontWeight: "bold", marginBottom: "20px", marginTop: "20px" }}>
                     Register
                 </Typography>
                 <form onSubmit={handleSubmit}>
@@ -143,7 +143,7 @@ const RegisterUser = () => {
                         type="submit"
                         variant="contained"
                         color="success" // Green color
-                        sx={{ marginTop: "20px", width: "50%", margin: "20px auto", fontSize: "0.8rem" }} // Reduced button size
+                        sx={{ marginTop: "20px", width: "60%", margin: "20px auto", fontSize: "1rem" }} // Reduced button size
                     >
                         Submit
                     </Button>
