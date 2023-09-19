@@ -6,7 +6,7 @@ import { LockOpen } from "@mui/icons-material";
 const HomeScreen = () => {
     const isLoggedIn = localStorage.getItem("customer_token") ? true : false;
     const [animationText, setAnimationText] = useState("");
-    const welcomeText = "Welcome to NeoFin Bank!";
+    const welcomeText = "Welcome to NeoFin Bank";
 
     useEffect(() => {
         const textInterval = setInterval(() => {
@@ -46,12 +46,12 @@ const HomeScreen = () => {
                 }}
             >
                 <Typography
-                    variant="h1" // Increased font size by 2 sizes
+                    variant="h2" // Increased font size by 2 sizes
                     style={{
-                        fontStyle: "italic",
+                        
                         fontWeight: "bold",
                         color: "#000",
-                        marginBottom: "20px", // Increased space between text and buttons
+                        marginBottom: "50px", // Increased space between text and buttons
                     }}
                 >
                     <i>{animationText}</i>
@@ -78,6 +78,7 @@ const HomeScreen = () => {
                                     variant="contained"
                                     color="primary"
                                     size="large" // Increased button size
+                                    style = {{width: "50%"}}
                                 >
                                     Login
                                 </Button>
@@ -89,6 +90,7 @@ const HomeScreen = () => {
                                     variant="outlined"
                                     color="primary"
                                     size="large" // Increased button size
+                                    style = {{width: "50%"}}
                                 >
                                     Register
                                 </Button>
