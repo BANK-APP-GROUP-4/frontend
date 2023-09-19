@@ -6,7 +6,7 @@ import { LockOpen } from "@mui/icons-material";
 const HomeScreen = () => {
     const isLoggedIn = localStorage.getItem("customer_token") ? true : false;
     const [animationText, setAnimationText] = useState("");
-    const welcomeText = "Welcome!";
+    const welcomeText = "Welcome to NeoFin Bank!";
 
     useEffect(() => {
         const textInterval = setInterval(() => {
@@ -46,7 +46,7 @@ const HomeScreen = () => {
                 }}
             >
                 <Typography
-                    variant="h5"
+                    variant="h3" // Increased font size
                     style={{
                         fontStyle: "italic",
                         fontWeight: "bold",
@@ -54,17 +54,17 @@ const HomeScreen = () => {
                         marginBottom: "20px",
                     }}
                 >
-                    {animationText}
+                    <i>{animationText}</i>
                 </Typography>
                 <Typography
-                    variant="h3" // Increased font size
+                    variant="h4" // Increased font size
                     style={{
                         marginBottom: "20px",
                         fontStyle: "italic",
                         fontWeight: "bold",
                     }}
                 >
-                    NeoFinTech Bank
+                    NeoFin Bank
                 </Typography>
                 <Grid container spacing={2} justifyContent="center" alignItems="center">
                     {isLoggedIn ? (
@@ -75,6 +75,7 @@ const HomeScreen = () => {
                                 variant="contained"
                                 color="primary"
                                 size="large" // Increased button size
+                                style={{ marginBottom: "10px" }} // Add margin for spacing
                             >
                                 Dashboard
                             </Button>
