@@ -10,27 +10,32 @@ const HomeScreen = () => {
         <Container
             maxWidth="md"
             style={{
-                textAlign: "center",
-                marginTop: "5rem",
-                position: "relative", // To position the admin button
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "100vh",
+                backgroundColor: "#f0f0f0",
             }}
         >
             <Paper
-                elevation={0} // Remove shadow
+                elevation={0}
                 style={{
                     padding: "20px",
                     backgroundColor: "#ffffff",
+                    borderRadius: "10px",
+                    textAlign: "center",
+                    maxWidth: "600px",
                 }}
             >
-                <Typography variant="h2" style={{ fontStyle: "italic", fontWeight: "bold", color: "red" }}>
+                <Typography variant="h3" style={{ fontStyle: "italic", fontWeight: "bold", color: "#007acc" }}>
                     Welcome to NeoFinTech
                 </Typography>
             </Paper>
             <Box
                 style={{
-                    position: "absolute",
-                    top: "20px", // Adjust the top position as needed
-                    right: "20px", // Adjust the right position as needed
+                    marginTop: "2rem",
+                    alignSelf: "flex-end",
                 }}
             >
                 <Button
