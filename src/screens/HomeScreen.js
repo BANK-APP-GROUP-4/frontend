@@ -41,38 +41,37 @@ const HomeScreen = () => {
                     maxWidth: "800px",
                     padding: "40px",
                     position: "relative",
-                    top: "-150px",
-                    height: "calc(100% + 200px)",
+                    top: "-100px", // Shifted down by 100px
+                    height: "calc(100% + 100px)", // Increased height by 100px
                 }}
             >
                 <Typography
-                    variant="h3" // Increased font size
+                    variant="h1" // Increased font size by 2 sizes
                     style={{
                         fontStyle: "italic",
                         fontWeight: "bold",
-                        color: "#000", // Black text color
-                        marginBottom: "20px",
+                        color: "#000",
+                        marginBottom: "20px", // Increased space between text and buttons
                     }}
                 >
                     <i>{animationText}</i>
                 </Typography>
                 <Grid container spacing={2} justifyContent="center">
                     {isLoggedIn ? (
-                        <Grid item>
+                        <Grid item xs={12}>
                             <Button
                                 component={Link}
                                 to="/customer/dashboard"
                                 variant="contained"
                                 color="primary"
                                 size="large" // Increased button size
-                                style={{ marginBottom: "10px" }} // Add margin for spacing
                             >
                                 Dashboard
                             </Button>
                         </Grid>
                     ) : (
                         <>
-                            <Grid item>
+                            <Grid item xs={12}>
                                 <Button
                                     component={Link}
                                     to="/customer/login"
@@ -83,7 +82,7 @@ const HomeScreen = () => {
                                     Login
                                 </Button>
                             </Grid>
-                            <Grid item>
+                            <Grid item xs={12}>
                                 <Button
                                     component={Link}
                                     to="/customer/register"
