@@ -46,7 +46,7 @@ const HomeScreen = () => {
                 }}
             >
                 <Typography
-                    variant="h3"
+                    variant="h5"
                     style={{
                         fontStyle: "italic",
                         fontWeight: "bold",
@@ -57,14 +57,16 @@ const HomeScreen = () => {
                     {animationText}
                 </Typography>
                 <Typography
-                    variant="h5"
+                    variant="h3" // Increased font size
                     style={{
                         marginBottom: "20px",
+                        fontStyle: "italic",
+                        fontWeight: "bold",
                     }}
                 >
-                    <span style={{ fontStyle: "italic", fontWeight: "bold" }}>NeoFinTech Bank</span>
+                    NeoFinTech Bank
                 </Typography>
-                <Grid container spacing={2} justifyContent="center">
+                <Grid container spacing={2} justifyContent="center" alignItems="center">
                     {isLoggedIn ? (
                         <Grid item>
                             <Button
@@ -72,6 +74,7 @@ const HomeScreen = () => {
                                 to="/customer/dashboard"
                                 variant="contained"
                                 color="primary"
+                                size="large" // Increased button size
                             >
                                 Dashboard
                             </Button>
@@ -84,6 +87,7 @@ const HomeScreen = () => {
                                     to="/customer/login"
                                     variant="contained"
                                     color="primary"
+                                    size="large" // Increased button size
                                 >
                                     Login
                                 </Button>
@@ -94,6 +98,7 @@ const HomeScreen = () => {
                                     to="/customer/register"
                                     variant="outlined"
                                     color="primary"
+                                    size="large" // Increased button size
                                 >
                                     Register
                                 </Button>
