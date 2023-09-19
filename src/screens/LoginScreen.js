@@ -1,58 +1,66 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import {LoginService} from '../actions/CustomerActions';
-import Footer from '../components/Footer';
-const LoginForm = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  if (localStorage.getItem('auth_token')) {
-    window.location.href = '/customer/dashboard';
-  }
-  const handleLogin = async (e) => {
-    e.preventDefault();
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Container, Typography, TextField, Button, Box } from "@mui/material";
+import Footer from "../components/Footer";
 
-    try {
-      const response = await LoginService.login(username, password);
-      if (response.status === "success") {
-        localStorage.setItem('auth_token', response.token);
-        // localStorage.setItem('customer_details', JSON.stringify(response.customer_details));
-        // localStorage.setItem('account_details', JSON.stringify(response.account_details));
-        window.location.href = '/customer/dashboard';
-      }
-      else{
-        alert(response.message);
-      }
-      
-    } catch (error) {
-      
-    }
-  };
+const LoginScreen = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-  return (
-    <div>
-      <div className='form-container'>
-      <form onSubmit={handleLogin}>
-      <h2>Login</h2>
+    const handleLogin = (e) => {
+        e.preventDefault();
+        // Add your login logic here
+    };
 
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button className='form-container-btn' type="submit">Login</button>
-        <Link to='/customer/register'>New User? Register Here</Link>
-      </form>
-    </div>
-    <Footer />
-    </div>
-  );
+    return (
+        <Container maxWidth="sm">
+            <Box
+                sx={{
+                    marginTop: "2rem",
+                    padding: "1rem",
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    backgroundColor: "#fff",
+                    borderRadius: "10px",
+                }}
+            >
+                <Typography variant="h4" style={{ fontWeight: "bold", marginBottom: "1rem", fontSize: "1.5rem" }}>
+                    Login
+                </Typography>
+                <form onSubmit={handleLogin}>
+                    <TextField
+                        fullWidth
+                        label="Username"
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }}
+                    />
+                    <TextField
+                        fullWidth
+                        label="Password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }}
+                    />
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        sx={{ marginTop: "20px", width: "50%", margin: "20px auto", fontSize: "0.8rem" }}
+                    >
+                        Login
+                    </Button>
+                    <Link to="/customer/register" style={{ display: "block", textAlign: "center", marginTop: "1rem" }}>
+                        New User? Register Here
+                    </Link>
+                </form>
+            </Box>
+            <Footer />
+        </Container>
+    );
 };
 
-export default LoginForm;
+export default LoginScreen;
