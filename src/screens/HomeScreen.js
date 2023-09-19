@@ -15,22 +15,68 @@ const HomeScreen = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 minHeight: "100vh",
-                backgroundColor: "#f0f0f0",
+                backgroundColor: "#f7f7f7", // Subtle off-white background
             }}
         >
             <Paper
-                elevation={0}
+                elevation={3}
                 style={{
-                    padding: "20px",
-                    backgroundColor: "#ffffff",
+                    padding: "40px",
+                    backgroundColor: "#fff", // White background
                     borderRadius: "10px",
                     textAlign: "center",
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)", // Subtle shadow
                     maxWidth: "600px",
                 }}
             >
-                <Typography variant="h3" style={{ fontStyle: "italic", fontWeight: "bold", color: "#007acc" }}>
+                <Typography
+                    variant="h3"
+                    style={{
+                        fontStyle: "italic",
+                        fontWeight: "bold",
+                        color: "#333", // Dark gray text color
+                        marginBottom: "20px",
+                    }}
+                >
                     Welcome to NeoFinTech
                 </Typography>
+                <Grid container spacing={2} justifyContent="center">
+                    {isLoggedIn ? (
+                        <Grid item>
+                            <Button
+                                component={Link}
+                                to="/customer/dashboard"
+                                variant="contained"
+                                color="primary"
+                            >
+                                Dashboard
+                            </Button>
+                        </Grid>
+                    ) : (
+                        <>
+                            <Grid item>
+                                <Button
+                                    component={Link}
+                                    to="/customer/login"
+                                    variant="contained"
+                                    color="primary"
+                                >
+                                    Login
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    component={Link}
+                                    to="/customer/register"
+                                    variant="outlined"
+                                    color="primary"
+                                >
+                                    Register
+                                </Button>
+                            </Grid>
+                        </>
+                    )}
+                </Grid>
             </Paper>
             <Box
                 style={{
@@ -48,30 +94,6 @@ const HomeScreen = () => {
                     Admin Login
                 </Button>
             </Box>
-            <Grid container spacing={2} justifyContent="center" style={{ marginTop: "2rem" }}>
-                {isLoggedIn ? (
-                    <>
-                        <Grid item>
-                            <Button component={Link} to="/customer/dashboard" variant="contained" color="primary">
-                                Dashboard
-                            </Button>
-                        </Grid>
-                    </>
-                ) : (
-                    <>
-                        <Grid item>
-                            <Button component={Link} to="/customer/login" variant="contained" color="primary">
-                                Login
-                            </Button>
-                        </Grid>
-                        <Grid item>
-                            <Button component={Link} to="/customer/register" variant="outlined" color="primary">
-                                Register
-                            </Button>
-                        </Grid>
-                    </>
-                )}
-            </Grid>
         </Container>
     );
 };
