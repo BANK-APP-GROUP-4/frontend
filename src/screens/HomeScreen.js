@@ -7,26 +7,25 @@ const HomeScreen = () => {
     const isLoggedIn = localStorage.getItem("customer_token") ? true : false;
 
     return (
-        <Container
-            maxWidth="md"
+        <div
             style={{
+                background: "linear-gradient(to bottom, #f0f8ff, #c2e9fb)",
+                minHeight: "100vh",
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                minHeight: "100vh",
-                backgroundColor: "#f0f8ff", // Light blue background color
             }}
         >
-            <Paper
-                elevation={3}
+            <Container
+                maxWidth="xl"
                 style={{
-                    padding: "40px",
                     backgroundColor: "#fff", // White background
                     borderRadius: "10px",
                     textAlign: "center",
                     boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)", // Subtle shadow
-                    maxWidth: "800px", // Increased width
+                    width: "75%", // 75% of the page width
+                    maxWidth: "800px", // Maximum width for content
+                    padding: "40px",
                 }}
             >
                 <Typography
@@ -77,7 +76,7 @@ const HomeScreen = () => {
                         </>
                     )}
                 </Grid>
-            </Paper>
+            </Container>
             <Box
                 style={{
                     position: "absolute",
@@ -95,7 +94,7 @@ const HomeScreen = () => {
                     Admin Login
                 </Button>
             </Box>
-        </Container>
+        </div>
     );
 };
 
