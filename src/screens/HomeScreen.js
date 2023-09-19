@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Typography, Button, Grid, Paper, Box } from "@mui/material";
 import { LockOpen } from "@mui/icons-material";
 
 const HomeScreen = () => {
     const isLoggedIn = localStorage.getItem("customer_token") ? true : false;
+    const [animationText, setAnimationText] = useState("");
+    const welcomeText = "Welcome!";
+
+    useEffect(() => {
+        const textInterval = setInterval(() => {
+            if (welcomeText.length > animationText.length) {
+                setAnimationText(welcomeText.slice(0, animationText.length + 1));
+            } else {
+                clearInterval(textInterval);
+            }
+        }, 200); // Adjust the speed of animation here (in milliseconds)
+
+        return () => clearInterval(textInterval);
+    }, [animationText]);
 
     return (
         <div
@@ -17,15 +31,18 @@ const HomeScreen = () => {
             }}
         >
             <Container
-                maxWidth="xl"
+                maxWidth="lg"
                 style={{
-                    backgroundColor: "#fff", // White background
+                    backgroundColor: "#fff",
                     borderRadius: "10px",
                     textAlign: "center",
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)", // Subtle shadow
-                    width: "75%", // 75% of the page width
-                    maxWidth: "800px", // Maximum width for content
+                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)",
+                    width: "80%",
+                    maxWidth: "800px",
                     padding: "40px",
+                    position: "relative",
+                    top: "-200px",
+                    height: "calc(100% + 200px)",
                 }}
             >
                 <Typography
@@ -33,11 +50,19 @@ const HomeScreen = () => {
                     style={{
                         fontStyle: "italic",
                         fontWeight: "bold",
-                        color: "#333", // Dark gray text color
+                        color: "#000", // Black text color
                         marginBottom: "20px",
                     }}
                 >
-                    Welcome to NeoFinTech
+                    {animationText}
+                </Typography>
+                <Typography
+                    variant="h5"
+                    style={{
+                        marginBottom: "20px",
+                    }}
+                >
+                    <span style={{ fontStyle: "italic", fontWeight: "bold" }}>NeoFinTech Bank</span>
                 </Typography>
                 <Grid container spacing={2} justifyContent="center">
                     {isLoggedIn ? (
@@ -80,8 +105,8 @@ const HomeScreen = () => {
             <Box
                 style={{
                     position: "absolute",
-                    top: "20px", // Adjust the top position as needed
-                    right: "20px", // Adjust the right position as needed
+                    top: "20px",
+                    right: "20px",
                 }}
             >
                 <Button
