@@ -56,17 +56,7 @@ const HomeScreen = () => {
                 >
                     <i>{animationText}</i>
                 </Typography>
-                <Typography
-                    variant="h4" // Increased font size
-                    style={{
-                        marginBottom: "20px",
-                        fontStyle: "italic",
-                        fontWeight: "bold",
-                    }}
-                >
-                    NeoFin Bank
-                </Typography>
-                <Grid container spacing={2} justifyContent="center" alignItems="center">
+                <Grid container spacing={2} justifyContent="center">
                     {isLoggedIn ? (
                         <Grid item>
                             <Button
