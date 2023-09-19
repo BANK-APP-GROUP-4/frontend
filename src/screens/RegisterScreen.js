@@ -62,91 +62,73 @@ const RegisterUser = () => {
             >
                 <Typography variant="h4">Register</Typography>
                 <form onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={6}>
-                            <TextField
-                                fullWidth
-                                label="First Name"
-                                name="firstName"
-                                value={formData.firstName}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                fullWidth
-                                label="Last Name"
-                                name="lastName"
-                                value={formData.lastName}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                fullWidth
-                                label="Address"
-                                name="address"
-                                value={formData.address}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                fullWidth
-                                label="Password"
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                fullWidth
-                                label="Email"
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                fullWidth
-                                label="Age"
-                                type="number"
-                                name="age"
-                                value={formData.age}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                fullWidth
-                                label="Gender"
-                                name="gender"
-                                value={formData.gender}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                fullWidth
-                                label="Phone Number"
-                                name="mobileNumber"
-                                value={formData.mobileNumber}
-                                onChange={handleChange}
-                                required
-                            />
-                        </Grid>
-                    </Grid>
+                    <TextField
+                        fullWidth
+                        label="First Name"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        fullWidth
+                        label="Last Name"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        fullWidth
+                        label="Address"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        fullWidth
+                        label="Password"
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        fullWidth
+                        label="Email"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        fullWidth
+                        label="Age"
+                        type="number"
+                        name="age"
+                        value={formData.age}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        fullWidth
+                        label="Gender"
+                        name="gender"
+                        value={formData.gender}
+                        onChange={handleChange}
+                        required
+                    />
+                    <TextField
+                        fullWidth
+                        label="Phone Number"
+                        name="mobileNumber"
+                        value={formData.mobileNumber}
+                        onChange={handleChange}
+                        required
+                    />
                     <Button
                         type="submit"
                         variant="contained"
