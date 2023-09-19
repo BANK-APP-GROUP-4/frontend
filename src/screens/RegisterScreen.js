@@ -60,7 +60,7 @@ const RegisterUser = () => {
                     borderRadius: "10px",
                 }}
             >
-                <Typography variant="h4" style={{ fontWeight: "bold", marginBottom: "1rem" }}>
+                <Typography variant="h4" style={{ fontWeight: "bold", marginBottom: "1rem", fontSize: "1.5rem" }}>
                     Register
                 </Typography>
                 <form onSubmit={handleSubmit}>
@@ -71,7 +71,7 @@ const RegisterUser = () => {
                         value={formData.firstName}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <TextField
                         fullWidth
@@ -80,7 +80,7 @@ const RegisterUser = () => {
                         value={formData.lastName}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <TextField
                         fullWidth
@@ -89,7 +89,7 @@ const RegisterUser = () => {
                         value={formData.address}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <TextField
                         fullWidth
@@ -99,7 +99,7 @@ const RegisterUser = () => {
                         value={formData.password}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <TextField
                         fullWidth
@@ -109,7 +109,7 @@ const RegisterUser = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <TextField
                         fullWidth
@@ -119,7 +119,7 @@ const RegisterUser = () => {
                         value={formData.age}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <TextField
                         fullWidth
@@ -128,7 +128,7 @@ const RegisterUser = () => {
                         value={formData.gender}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <TextField
                         fullWidth
@@ -137,13 +137,13 @@ const RegisterUser = () => {
                         value={formData.mobileNumber}
                         onChange={handleChange}
                         required
-                        sx={{ marginBottom: "1rem", width: "60%" }} // Reduced input field size
+                        sx={{ marginBottom: "1rem", width: "70%", height: "70%" }} // Reduced input field size
                     />
                     <Button
                         type="submit"
                         variant="contained"
                         color="success" // Green color
-                        sx={{ marginTop: "20px", width: "50%", margin: "20px auto" }} // Reduced button size
+                        sx={{ marginTop: "20px", width: "50%", margin: "20px auto", fontSize: "0.8rem" }} // Reduced button size
                     >
                         Submit
                     </Button>
