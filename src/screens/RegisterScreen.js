@@ -60,7 +60,9 @@ const RegisterUser = () => {
                     borderRadius: "10px",
                 }}
             >
-                <Typography variant="h4">Register</Typography>
+                <Typography variant="h4" style={{ fontWeight: "bold", marginBottom: "1rem" }}>
+                    Register
+                </Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField
                         fullWidth
@@ -69,6 +71,7 @@ const RegisterUser = () => {
                         value={formData.firstName}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <TextField
                         fullWidth
@@ -77,6 +80,7 @@ const RegisterUser = () => {
                         value={formData.lastName}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <TextField
                         fullWidth
@@ -85,6 +89,7 @@ const RegisterUser = () => {
                         value={formData.address}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <TextField
                         fullWidth
@@ -94,6 +99,7 @@ const RegisterUser = () => {
                         value={formData.password}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <TextField
                         fullWidth
@@ -103,6 +109,7 @@ const RegisterUser = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <TextField
                         fullWidth
@@ -112,6 +119,7 @@ const RegisterUser = () => {
                         value={formData.age}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <TextField
                         fullWidth
@@ -120,6 +128,7 @@ const RegisterUser = () => {
                         value={formData.gender}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <TextField
                         fullWidth
@@ -128,13 +137,13 @@ const RegisterUser = () => {
                         value={formData.mobileNumber}
                         onChange={handleChange}
                         required
+                        sx={{ marginBottom: "1rem", width: "75%" }}
                     />
                     <Button
                         type="submit"
                         variant="contained"
-                        color="primary"
-                        fullWidth
-                        sx={{ marginTop: "1rem" }}
+                        color="success" // Green color
+                        sx={{ marginTop: "20px", width: "50%", margin: "20px auto" }} // Reduced size and added margin
                     >
                         Submit
                     </Button>
