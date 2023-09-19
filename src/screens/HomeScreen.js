@@ -41,7 +41,7 @@ const HomeScreen = () => {
                     maxWidth: "800px",
                     padding: "40px",
                     position: "relative",
-                    top: "-200px",
+                    top: "-150px",
                     height: "calc(100% + 200px)",
                 }}
             >
