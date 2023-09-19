@@ -15,7 +15,7 @@ const HomeScreen = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 minHeight: "100vh",
-                backgroundColor: "#f7f7f7", // Subtle off-white background
+                backgroundColor: "#f0f8ff", // Light blue background color
             }}
         >
             <Paper
@@ -26,7 +26,7 @@ const HomeScreen = () => {
                     borderRadius: "10px",
                     textAlign: "center",
                     boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.2)", // Subtle shadow
-                    maxWidth: "600px",
+                    maxWidth: "800px", // Increased width
                 }}
             >
                 <Typography
@@ -80,8 +80,9 @@ const HomeScreen = () => {
             </Paper>
             <Box
                 style={{
-                    marginTop: "2rem",
-                    alignSelf: "flex-end",
+                    position: "absolute",
+                    top: "20px", // Adjust the top position as needed
+                    right: "20px", // Adjust the right position as needed
                 }}
             >
                 <Button
