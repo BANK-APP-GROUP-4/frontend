@@ -3,12 +3,12 @@ import { BrowserRouter , Route, Routes} from 'react-router-dom';
 import RegisterUser from './screens/RegisterScreen';
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
-import AccountDetails from "./screens/AccountDetails";
-import TransactionDetails from './screens/TransactionDetails';
 import CustomerDashboard from "./screens/CustomerDashboard";
 import TransferFunds from "./screens/TransferFunds";
 import AccountSummary from "./screens/AccountSummary";
-
+import AccountStatement from "./screens/AccountStatement";
+import CustomerDetails from "./screens/CustomerDetails";
+import ResetPassword from "./screens/ResetPassword";
 function App() {
   return (
     <div className="App">
@@ -18,10 +18,11 @@ function App() {
         <Route exact path='/customer/register' element={<RegisterUser/>}/>
         <Route path="/customer/login" element={<LoginScreen />} />
         <Route path="/customer/dashboard" element={<CustomerDashboard />} />
-        <Route path="/customer/account-details" element={<AccountDetails />} /> 
-        <Route path="/customer/dashboard/transaction-details" element={<TransactionDetails />} /> 
         <Route path="/customer/transfer-funds" element={<TransferFunds />} />
         <Route path="/customer/account-summary" element={<AccountSummary />} />
+        <Route path="/customer/account-statement" element={<AccountStatement />} />
+        <Route path="/customer/details" element={<CustomerDetails />} />
+        <Route path="/customer/reset-password" element={<ResetPassword />} />
       </Routes>
       </BrowserRouter>
     </div>

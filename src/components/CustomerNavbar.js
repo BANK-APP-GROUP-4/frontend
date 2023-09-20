@@ -14,14 +14,22 @@ const CustomerNavbar = () => {
                     NeoFinTech
                     </Link>
                 
+                {
+                    localStorage.getItem('auth_token') ?
                     <div className='customer-link-nav'>
-                        <Link to='/customer/details'>Customer Details</Link>
-                        <Link to='/customer/account-details'>Account Details</Link>
-                        <Link to='/customer/account-summary'>Accounts Summary</Link>
-                        <Link to='/customer/transfer-funds'>Transfer Funds</Link>
-                    </div>
+                    <Link className="dashboard-link" to='/customer/dashboard'>Dashboard</Link>
+                    <Link to='/customer/account-summary'>Accounts Summary</Link>
+                    <Link to='/customer/account-statement'>Account Statement</Link>
+                    <Link to='/customer/transfer-funds'>Transfer Funds</Link>
+                    <Link to='/customer/details'>Customer Details</Link>
                     <button className='logout-btn' onClick={handleLogout}>Logout</button>
 
+                    </div>                
+                        :
+                        <div>
+                            
+                        </div>
+                }
             </div>
         </div>
     )

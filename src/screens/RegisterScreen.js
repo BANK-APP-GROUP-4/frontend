@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import CustomerNavbar from "../components/CustomerNavbar";
+import Footer from "../components/Footer";
 import axios from "axios";
 const RegisterUser= () => {
     
@@ -44,7 +46,7 @@ const RegisterUser= () => {
     
     const submitActionHandler = (event) => {
         var today = new Date().toISOString().substring(0,10)
-        console.log(today)
+        const status_msg_div = document.querySelector('.status_msg_div');
         event.preventDefault();
         axios.post(baseURL,{
             firstName : fname,
@@ -58,46 +60,42 @@ const RegisterUser= () => {
             dateBecameCustomer : today
         })
         .then((response) => {
-            alert("Customer " + fname  + " added !");
-            // navigate("/account");
+            status_msg_div.innerHTML = `<p class='success-msg'>${response}</p>`;
         }).catch(error => {
-            alert("error==="+error);
+            status_msg_div.innerHTML = `<p class='error-msg'>${error}</p>`;
         });
     };
 
     return (
         <div>
- <h2>Register</h2>
+        <CustomerNavbar />
+            <div className="customer-registration-form">
         <form onSubmit={submitActionHandler}>
-            <label>fname:</label>
+        <h2>Register</h2>
+        <div className='status_msg_div'>
+        </div>
+            <label>First Name</label>
             <input type="text" value={fname} onChange={fnameChangeHandler}></input>
-            <br></br>
-            <label>lname:</label>
+            <label>Last Name</label>
             <input type="text" value={lname} onChange={lnameChangeHandler}></input>
-            <br></br>
-            <label>Address:</label>
+            <label>Address</label>
             <input type="text" value={address} onChange={addressChangeHandler}></input>
-            <br></br>
-            <label>password:</label>
+            <label>Password</label>
             <input type="password" value={pass} onChange={passChangeHandler}></input>
-            <br></br>
-            <label>email:</label>
+            <label>Email Id</label>
             <input type="email" value={email} onChange={emailChangeHandler}></input>
-            <br></br>
-            <label>age:</label>
+            <label>Your Age</label>
             <input type="number" value={age} onChange={ageChangeHandler}></input>
-            <br></br>
             <label>Gender:</label>
             <input type="text" value={gender} onChange={genderChangeHandler}></input>
-            <br></br>
-            <label>phonenumber:</label>
+            <label>Phone Number</label>
             <input type="text" value={phno} onChange={phnoChangeHandler}></input>
 
-            <button type="submit">submit</button>
-            <div>
-                <Link to="/">Home</Link>
-            </div>
+            <button className="form-container-btn" type="submit">submit</button>
+            <Link className="reg-login-link" to="/customer/login">Already have an account?</Link>
         </form>
+        {/* <Footer /> */}
+        </div>
         </div>
      
     );
