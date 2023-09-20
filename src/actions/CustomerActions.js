@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8081';
+const BASE_URL = 'http://localhost:4000';
 
 export const LoginService = {
   login: async (username, password) => {
@@ -17,12 +17,27 @@ export const LoginService = {
 };
 
 export const CustomerDetailsService = {
-  getCustomerDetails: async (token) => {
+  getCustomerDetails: async (auth_token) => {
     try {
       const response = await axios.get(`${BASE_URL}/api/v1/customer/details`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth_token}`,
         },
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
+export const ChangePasswordService = {
+  changePassword: async (username, new_password, otp) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/api/v1/customer/change-password`, {
+        username,
+        new_password,
+        otp
       });
       return response.data;
     } catch (error) {
