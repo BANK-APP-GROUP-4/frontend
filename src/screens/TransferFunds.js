@@ -7,6 +7,7 @@ import { AccountDetailsService } from '../actions/AccountsActions';
 
 const TransferFunds = () => {
     const auth_token = localStorage.getItem('auth_token');
+    const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
     if (!auth_token) {
         window.location.href = '/customer/login';
     }
@@ -28,7 +29,7 @@ const TransferFunds = () => {
     const handleTransferFunds = async (e) => {
         e.preventDefault();
         try {
-        const response = await FundTransferService.transferFunds(auth_token, fromAccount, toAccount, amount);
+        const response = await FundTransferService.transferFunds(auth_token, fromAccount, toAccount, amount, customer_id);
         const status_msg_div = document.querySelector('.status_msg_div');
         if (response.status === "success") {
         status_msg_div.innerHTML = `<p class='success-msg'>${response.message}</p>`;

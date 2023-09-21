@@ -17,9 +17,9 @@ export const LoginService = {
 };
 
 export const CustomerDetailsService = {
-  getCustomerDetails: async (auth_token) => {
+  getCustomerDetails: async (auth_token, customer_id) => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/v1/customer/details`, {
+      const response = await axios.post(`${BASE_URL}/api/v1/customer/details`,{auth_token, customer_id}, {
         headers: {
           Authorization: `Bearer ${auth_token}`,
         },

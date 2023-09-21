@@ -10,12 +10,13 @@ import Footer from '../components/Footer';
 
 const CustomerDashboard = () => {
     const auth_token = localStorage.getItem('auth_token');
+    const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
     if(!auth_token){
         window.location.href = '/customer/login';
     }
     else {
         async function getCustomerDetails() {
-        const customer_details = await CustomerDetailsService.getCustomerDetails(auth_token);
+        const customer_details = await CustomerDetailsService.getCustomerDetails(auth_token, customer_id);
         if(customer_details.status === "success"){
             localStorage.setItem('customer_details', JSON.stringify(customer_details.customer_details));
         }

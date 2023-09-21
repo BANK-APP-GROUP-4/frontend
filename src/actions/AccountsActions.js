@@ -3,10 +3,10 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:4000';
 
 export const FundTransferService = {
-    transferFunds: async (auth_token, fromAccount, toAccount, amount) => {
+    transferFunds: async (auth_token, fromAccount, toAccount, amount, customer_id) => {
     try {
       const response = await axios.post(`${BASE_URL}/api/v1/account/fund-transfer`, {
-        fromAccount, toAccount, amount, 
+        fromAccount, toAccount, amount, customer_id
       }, 
       {
         headers: {
@@ -24,7 +24,7 @@ export const FundTransferService = {
 export const AccountDetailsService = {
   getAccountDetails: async (auth_token, customer_id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/api/v1/account/details`, {
+    const response = await axios.get(`${BASE_URL}/api/v1/account/details`,{customer_id}, {
       headers: {
         Authorization: `Bearer ${auth_token}`,
       },
@@ -37,10 +37,10 @@ export const AccountDetailsService = {
 };
 
 export const AccountSummaryService = {
-  getAccountSummary: async (auth_token, accountNumber) => {
+  getAccountSummary: async (auth_token, accountNumber, customer_id) => {
   try {
     const response = await axios.post(`${BASE_URL}/api/v1/account/summary`, {
-      accountNumber
+      accountNumber, customer_id
     }, {
       headers: {
         Authorization: `Bearer ${auth_token}`,
@@ -54,10 +54,10 @@ export const AccountSummaryService = {
 };
 
 export const AccountStatementService = {
-  getAccountStatement: async (auth_token, accountNumber, fromDate, toDate) => {
+  getAccountStatement: async (auth_token, accountNumber, fromDate, toDate, customer_id) => {
   try {
     const response = await axios.post(`${BASE_URL}/api/v1/account/statement`, {
-      accountNumber, fromDate, toDate
+      accountNumber, fromDate, toDate, customer_id
     }, {
       headers: {
         Authorization: `Bearer ${auth_token}`,

@@ -8,6 +8,7 @@ const AccountStatement = () => {
     const [fromDate, setFromDate] = useState(null);
     const [toDate, setToDate] = useState(null);
     const auth_token = localStorage.getItem('auth_token');
+    const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
     if (!auth_token) {
         window.location.href = '/customer/login';
     }
@@ -27,7 +28,7 @@ const AccountStatement = () => {
         e.preventDefault();
         const selectedAccountNumber = selectedAccount;
         try {
-            const response = await AccountStatementService.getAccountStatement(auth_token, selectedAccountNumber, fromDate, toDate);
+            const response = await AccountStatementService.getAccountStatement(auth_token, selectedAccountNumber, fromDate, toDate, customer_id);
             const AccountStatementResponse = response.accountStatement; 
             if (response.status === 'success') {
                 const accountSummaryRecentTransactionsCntr = document.querySelector('.account-summary-recent-transactions-cntr');
