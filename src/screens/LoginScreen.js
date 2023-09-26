@@ -17,10 +17,12 @@ const LoginForm = () => {
       const response = await LoginService.login(username, password);
       const status_msg_div = document.querySelector('.status_msg_div');
       if (response.status === "success") {
-        localStorage.setItem('auth_token', response.auth_token);
+        localStorage.setItem('auth_token', response.tken);
+        localStorage.setItem('email', response.username);
         const auth_token = localStorage.getItem('auth_token');
+        const email = localStorage.getItem('email');
         async function getCustomerDetails() {
-          const customer_details = await CustomerDetailsService.getCustomerDetails(auth_token);
+          const customer_details = await CustomerDetailsService.getCustomerDetails(auth_token, email);
           if(customer_details.status === "success"){
               localStorage.setItem('customer_details', JSON.stringify(customer_details.customer_details));
           }

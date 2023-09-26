@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 const RegisterUser= () => {
     
-    const baseURL = "http://localhost:8081/api/v1/customer/add";
+    const baseURL = "http://localhost:8081/api/v1/customer/register";
     const navigate = useNavigate();
     const [fname,setFname] = useState('');
     const [lname,setLname] = useState('');
