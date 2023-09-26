@@ -13,18 +13,18 @@ const AccountSummary = () => {
         const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
         const account_details = await AccountDetailsService.getAccountDetails(auth_token, customer_id);
         if(account_details.status === "success"){
-            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savingsAccountList));
+            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savings_account_details));
             localStorage.setItem('fd_account_details', JSON.stringify(account_details.fdAccountList));
         }            
     }
     getAccountDetails();
     const savings_account_details = JSON.parse(localStorage.getItem('savings_account_details'));
-    const saving_account_list = savings_account_details.map((account) => { return account.accountNumber });
+    const saving_account_list = savings_account_details.map((account) => { return account.id });
     const handleAccountSummary = async (e) => {
         const selectedAccountNumber = e.target.value;
         const savings_account_details = JSON.parse(localStorage.getItem('savings_account_details'));
-    
-        const selectedAccountDetails = savings_account_details.filter((account) => { return account.accountNumber === selectedAccountNumber });
+        const selectedAccountDetails = savings_account_details.filter((account) => { return account.id == selectedAccountNumber });
+        console.log(selectedAccountDetails);
         const accountSummaryDetailsDiv = document.querySelector('.account-summary-details');
         accountSummaryDetailsDiv.innerHTML = `
         <table class="account-summary-details-table">
@@ -32,7 +32,7 @@ const AccountSummary = () => {
                     <tr>
                         <td>Account Number</td>
                         <td>
-                        ${selectedAccountDetails[0].accountNumber}
+                        ${selectedAccountDetails[0].id}
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +44,7 @@ const AccountSummary = () => {
                     <tr>
                         <td>Account Type</td>
                         <td>
-                        ${selectedAccountDetails[0].accountType}
+                        Savings Account
                         </td>
                     </tr>
                     <tr>
@@ -58,7 +58,7 @@ const AccountSummary = () => {
         `;
         try {
             const response = await AccountSummaryService.getAccountSummary(auth_token, selectedAccountNumber);
-            const account_summary = response.accountSummary;
+            const account_summary = response.transactions;
             if (response.status === 'success') {
                 const accountSummaryRecentTransactionsCntr = document.querySelector('.account-summary-recent-transactions-cntr');
                 accountSummaryRecentTransactionsCntr.innerHTML = `
@@ -70,15 +70,17 @@ const AccountSummary = () => {
                         <th>To</th>
                         <th>Amount</th>
                         <th>Date</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${account_summary.map((transaction) => {
                     return `<tr>
-                        <td>${transaction.fromAccount}</td>
-                        <td>${transaction.toAccount}</td>
+                        <td>${transaction.senderAcc.id}</td>
+                        <td>${transaction.receiverAcc.id}</td>
                         <td>${transaction.amount}</td>
                         <td>${transaction.dateOfTransaction}</td>
+                        <td>${transaction.status}</td>
                     </tr>`
                 })}
                 </tbody>

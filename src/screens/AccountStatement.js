@@ -16,19 +16,31 @@ const AccountStatement = () => {
         const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
         const account_details = await AccountDetailsService.getAccountDetails(auth_token, customer_id);
         if(account_details.status === "success"){
-            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savingsAccountList));
-            localStorage.setItem('fd_account_details', JSON.stringify(account_details.fdAccountList));
+            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savings_account_details));
+            // localStorage.setItem('fd_account_details', JSON.stringify(account_details.fdAccountList));
         }            
     }
     getAccountDetails();
     const savings_account_details = JSON.parse(localStorage.getItem('savings_account_details'));
-    const saving_account_list = savings_account_details.map((account) => { return account.accountNumber });
+    const saving_account_list = savings_account_details.map((account) => { return account.id });
     const handleAccountStatement = async (e) => {
         e.preventDefault();
+        const status_msg_div = document.querySelector('.status_msg_div');
         const selectedAccountNumber = selectedAccount;
         try {
-            const response = await AccountStatementService.getAccountStatement(auth_token, selectedAccountNumber, fromDate, toDate);
-            const AccountStatementResponse = response.accountStatement; 
+            var response;
+            if(fromDate > toDate){
+                status_msg_div.innerHTML = `<p class='error-msg'>
+                From date cannot be greater than to date
+                </p>`;
+                return;
+            }
+            
+
+            else {
+                response = await AccountStatementService.getAccountStatement(auth_token, selectedAccountNumber, fromDate, toDate);
+            }
+            const AccountStatementResponse = response.transactions; 
             if (response.status === 'success') {
                 const accountSummaryRecentTransactionsCntr = document.querySelector('.account-summary-recent-transactions-cntr');
                 accountSummaryRecentTransactionsCntr.innerHTML = `
@@ -47,10 +59,11 @@ const AccountStatement = () => {
                 <tbody>
                     ${AccountStatementResponse.map((transaction) => {
                     return `<tr>
-                        <td>${transaction.fromAccount}</td>
-                        <td>${transaction.toAccount}</td>
-                        <td>${transaction.amount}</td>
-                        <td>${transaction.dateOfTransaction}</td>
+                    <td>${transaction.senderAcc.id}</td>
+                    <td>${transaction.receiverAcc.id}</td>
+                    <td>${transaction.amount}</td>
+                    <td>${transaction.dateOfTransaction}</td>
+                    <td>${transaction.status}</td>
                     </tr>`
                 })}
                 </tbody>
@@ -68,6 +81,8 @@ const AccountStatement = () => {
         <div>
             <CustomerNavbar />
             <h2 className='h2-headings'>Account Statement</h2>
+            <div className='status_msg_div'>
+      </div>
             <form className='account-statement-form' onSubmit={handleAccountStatement}>
                 <select required className='account-statement-select' onChange={(e) => setSelectedAccount(e.target.value)}>
                     <option value=''>Select Account</option>
