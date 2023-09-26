@@ -7,7 +7,6 @@ import { AccountDetailsService } from '../actions/AccountsActions';
 
 const TransferFunds = () => {
     const auth_token = localStorage.getItem('auth_token');
-    const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
     if (!auth_token) {
         window.location.href = '/customer/login';
     }
@@ -16,26 +15,36 @@ const TransferFunds = () => {
         const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
         const account_details = await AccountDetailsService.getAccountDetails(auth_token, customer_id);
         if(account_details.status === "success"){
-            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savingsAccountList));
-            localStorage.setItem('fd_account_details', JSON.stringify(account_details.fdAccountList));
+            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savings_account_details));
+            // localStorage.setItem('fd_account_details', JSON.stringify(account_details.fdAccountList));
         }            
     }
     getAccountDetails();
     const savings_account_details = JSON.parse(localStorage.getItem('savings_account_details'));
-    const saving_account_list = savings_account_details.map((account) => { return account.accountNumber });
+    const saving_account_list = savings_account_details.map((account) => { return account.id });
     const [fromAccount, setFromAccount] = useState('');
     const [toAccount, setToAccount] = useState('');
     const [amount, setAmount] = useState('');
     const handleTransferFunds = async (e) => {
         e.preventDefault();
         try {
-        const response = await FundTransferService.transferFunds(auth_token, fromAccount, toAccount, amount, customer_id);
+        var response;
         const status_msg_div = document.querySelector('.status_msg_div');
-        if (response.status === "success") {
-        status_msg_div.innerHTML = `<p class='success-msg'>${response.message}</p>`;
+        if(amount <= 0){
+            status_msg_div.innerHTML = `<p class='error-msg'>Amount cannot be less than or equal to 0</p>`;
+            return;
+        }
+        else {
+            response = await FundTransferService.transferFunds(auth_token, fromAccount, toAccount, amount);
+        }
+        if (response.message === "Transaction Succesful!") {
+        status_msg_div.innerHTML = `<p class='success-msg'>Successful transaction!! Redirecting to account summary</p>`;
+        setTimeout(() => {
+          window.location.href = '/customer/account-summary';
+        }, 5000);
       }
       else {
-        status_msg_div.innerHTML = `<p class='error-msg'>${response.message}</p>`;
+        status_msg_div.innerHTML = `<p class='error-msg'>Transaction failed !! Balance not available</p>`;
       }
         } catch (error) {
             alert(error.message);

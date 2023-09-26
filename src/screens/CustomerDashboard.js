@@ -10,23 +10,24 @@ import Footer from '../components/Footer';
 
 const CustomerDashboard = () => {
     const auth_token = localStorage.getItem('auth_token');
-    const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
+    const email = localStorage.getItem('email');
     if(!auth_token){
         window.location.href = '/customer/login';
     }
     else {
         async function getCustomerDetails() {
-        const customer_details = await CustomerDetailsService.getCustomerDetails(auth_token, customer_id);
+        const customer_details = await CustomerDetailsService.getCustomerDetails(auth_token, email);
         if(customer_details.status === "success"){
             localStorage.setItem('customer_details', JSON.stringify(customer_details.customer_details));
+            localStorage.setItem('customer_id', JSON.stringify(customer_details.customer_details.id));
         }
     }
     async function getAccountDetails() {
         const customer_id = JSON.parse(localStorage.getItem('customer_details')).id;
         const account_details = await AccountDetailsService.getAccountDetails(auth_token, customer_id);
         if(account_details.status === "success"){
-            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savingsAccountList));
-            localStorage.setItem('fd_account_details', JSON.stringify(account_details.fdAccountList));
+            localStorage.setItem('savings_account_details', JSON.stringify(account_details.savings_account_details));
+            // localStorage.setItem('fd_account_details', JSON.stringify(account_details.fdAccountList));
         }            
     }
     getAccountDetails();
@@ -34,7 +35,8 @@ const CustomerDashboard = () => {
         getCustomerDetails();
     }
     const customer_details = JSON.parse(localStorage.getItem('customer_details'));
-    
+    setTimeout(() => {
+    }, 5000);
     return (
         <div className="customer-dashboard-container">
             <CustomerNavbar />

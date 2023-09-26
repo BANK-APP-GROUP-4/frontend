@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'http://localhost:8081';
 
 export const LoginService = {
-  login: async (username, password) => {
+  login: async (email, password) => {
     try {
       const response = await axios.post(`${BASE_URL}/api/v1/customer/login`, {
-        username,
+        email,
         password,
       });
       return response.data;
@@ -17,9 +17,11 @@ export const LoginService = {
 };
 
 export const CustomerDetailsService = {
-  getCustomerDetails: async (auth_token, customer_id) => {
+  getCustomerDetails: async (auth_token, email) => {
     try {
-      const response = await axios.post(`${BASE_URL}/api/v1/customer/details`,{auth_token, customer_id}, {
+      const response = await axios.post(`${BASE_URL}/api/v1/customer/details`, {
+        email
+      }, {
         headers: {
           Authorization: `Bearer ${auth_token}`,
         },
@@ -32,12 +34,15 @@ export const CustomerDetailsService = {
 };
 
 export const ChangePasswordService = {
-  changePassword: async (username, new_password, otp) => {
+  changePassword: async (auth_token, email, password, otp) => {
     try {
-      const response = await axios.post(`${BASE_URL}/api/v1/customer/change-password`, {
-        username,
-        new_password,
-        otp
+      const response = await axios.put(`${BASE_URL}/api/v1/customer/changePassword/${otp}`, {
+        email,
+        password
+      }, {
+        headers: {
+          Authorization: `Bearer ${auth_token}`,
+        },
       });
       return response.data;
     } catch (error) {
