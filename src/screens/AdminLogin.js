@@ -4,6 +4,9 @@ import { Container, Typography, TextField, Button, Box } from "@mui/material";
 import Footer from "../components/Footer";
 
 const AdminLogin = () => {
+    if (localStorage.getItem('admin_token')) {
+        window.location.href = '/admin/dashboard';
+    }
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 

@@ -14,9 +14,14 @@ const AdminNavbar = () => {
                     <Link className='site-logo-text' to="/" >
                     NeoFinTech
                     </Link>
-                
-                    
+
+                    {
+                        localStorage.getItem('admin_token') ? 
                     <button className='logout-btn' onClick={handleLogout}>Logout</button>
+                    :
+                    <div>
+                    </div>
+                    }
 
             </div>
             <Footer />

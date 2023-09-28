@@ -447,3 +447,28 @@ label {
 .customer-registration-form input:focus {
   border: 1px solid #000;
 }
+
+.admin-login-btn {
+  background-color: #000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #000;
+  transition: all 0.3s;
+  padding: 1.5rem 2.5rem;
+  border-radius: 50px;
+  margin-left: 25rem;
+}
+
+.admin-login-btn:hover {
+  background-color: #353436;
+  color: #ffffff;
+}
+
+.admin-login-btn a {
+  text-decoration: none;
+  color: #ffffff;
+
+}

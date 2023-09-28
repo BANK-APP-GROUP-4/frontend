@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Container, Typography, TextField, Button, Box } from "@mui/material";
 import AdminNavbar from '../components/AdminNavbar';
-import SummaryPNG from "../assets/summary.png";
-import TransferPNG from "../assets/transfer.png";
-import Footer from '../components/Footer';
+
 
 const AdminDashboard = () => {
+    // if (!localStorage.getItem('admin_token')) {
+    //     window.location.href = '/admin/login';
+    // }
     return(
         <div className="admin-dashboard-container">
         <AdminNavbar />

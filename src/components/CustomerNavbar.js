@@ -26,8 +26,14 @@ const CustomerNavbar = () => {
 
                     </div>                
                         :
+                        !localStorage.getItem('admin_token') ?
                         <div>
-                            
+                            <button className='admin-login-btn'>
+                                <Link to='/admin/login'>Admin Login</Link>
+                            </button>
+                        </div>
+                        :
+                        <div>
                         </div>
                 }
             </div>
