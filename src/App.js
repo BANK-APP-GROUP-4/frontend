@@ -11,6 +11,7 @@ import CustomerDetails from "./screens/CustomerDetails";
 import ResetPassword from "./screens/ResetPassword";
 import AdminDashboard from './screens/AdminDashboard';
 import AdminLogin from './screens/AdminLogin';
+import NotFound from './components/NotFound';
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
         <Route path="/customer/reset-password" element={<ResetPassword />} />
         <Route path= "/admin/login" element= {<AdminLogin/>}/>
         <Route path= "/admin/dashboard" element = {<AdminDashboard/>}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </BrowserRouter>
     </div>
