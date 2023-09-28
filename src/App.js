@@ -9,6 +9,8 @@ import AccountSummary from "./screens/AccountSummary";
 import AccountStatement from "./screens/AccountStatement";
 import CustomerDetails from "./screens/CustomerDetails";
 import ResetPassword from "./screens/ResetPassword";
+import AdminDashboard from './screens/AdminDashboard';
+import AdminLogin from './screens/AdminLogin';
 function App() {
   return (
     <div className="App">
@@ -23,6 +25,8 @@ function App() {
         <Route path="/customer/account-statement" element={<AccountStatement />} />
         <Route path="/customer/details" element={<CustomerDetails />} />
         <Route path="/customer/reset-password" element={<ResetPassword />} />
+        <Route path= "/admin/login" element= {<AdminLogin/>}/>
+        <Route path= "/admin/dashboard" element = {<AdminDashboard/>}/>
       </Routes>
       </BrowserRouter>
     </div>
