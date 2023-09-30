@@ -72,3 +72,38 @@ export const AccountStatementService = {
   }
 },
 };
+
+export const savingsAccountCreationService = {
+  savingsAccountCreation: async (auth_token, id, depositAmount, creditCardNeeded, debitCardNeeded) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/api/v1/account/savings/create`, {
+      id, depositAmount, creditCardNeeded, debitCardNeeded
+    }, {
+      headers: {
+        Authorization: `Bearer ${auth_token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+
+}
+};
+export const fdAccountCreationService = {
+  fdAccountCreation: async (auth_token, id, principalAmount, maturityPeriod) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/api/v1/account/fd/create`, {
+      id, principalAmount, maturityPeriod
+    }, {
+      headers: {
+        Authorization: `Bearer ${auth_token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+
+}
+};

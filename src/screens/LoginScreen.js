@@ -29,7 +29,9 @@ const LoginForm = () => {
       }
       getCustomerDetails();
         status_msg_div.innerHTML = `<p class='success-msg'>${response.message}</p>`;
-        window.location.href = '/customer/dashboard';
+        setTimeout(() => {
+          window.location.href = '/customer/dashboard';
+        }, 2000);
       }
       else {
         status_msg_div.innerHTML = `<p class='error-msg'>${response.message}</p>`;

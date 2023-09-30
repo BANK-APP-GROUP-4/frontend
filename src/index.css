@@ -416,26 +416,9 @@ label {
   width: 44rem;
 }
 
-.customer-registration-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 2rem;
-  border: 1px solid #000;
-  width: 40%;
-  margin: 0 auto;
-  margin-top: 5rem;
-}
 
-.customer-registration-form input {
-  width: 35rem;
-  height: 2rem;
-  border: 1px solid #000;
-  font-size: 1.6rem;
-  padding: 1rem 2rem;
-  display: flex;
-  margin-bottom: 2rem;
-}
+
+
 
 .reg-login-link {
   display: flex;
@@ -444,9 +427,7 @@ label {
   padding: 2rem 2rem;
 }
 
-.customer-registration-form input:focus {
-  border: 1px solid #000;
-}
+
 
 .admin-login-btn {
   background-color: #000;
@@ -471,4 +452,85 @@ label {
   text-decoration: none;
   color: #ffffff;
 
+}
+
+.customer-registration-form {
+  border: 1px solid #000;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+  margin-top: 5rem;
+}
+
+.form-input-text-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-input-text-fields input {
+  width: 40rem;
+  height: 5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #000;
+  border-radius: 50px;
+  font-size: 1.6rem;
+  padding: 0 2rem;
+}
+
+.acc-creation-link {
+  background-color: #4bf04e;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #000 !important;
+  font-size: 1.6rem;
+}
+
+.acc-creation-link:hover {
+  background-color: #5ce600;
+  color: #000 !important;
+  border: none !important;
+}
+
+.account-creation-form {
+  border: 1px solid #000;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+  margin-top: 5rem;
+}
+
+.account-creation-form input[type="number"] {
+  width: 40rem;
+  height: 5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #000;
+  border-radius: 50px;
+  font-size: 1.6rem;
+  padding: 0 2rem;
+  display: flex;
+}
+
+
+
+.account-creation-form button {
+  width: 40rem;
+  padding: 2rem 5rem;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 50px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.account-creation-form button:hover {
+  background-color: #f93737;
+  color: #ffffff;
 }

@@ -22,6 +22,7 @@ const CustomerNavbar = () => {
                     <Link to='/customer/account-statement'>Account Statement</Link>
                     <Link to='/customer/transfer-funds'>Transfer Funds</Link>
                     <Link to='/customer/details'>Customer Details</Link>
+                    <Link className="acc-creation-link" to="/customer/create-account">Open New Account</Link>
                     <button className='logout-btn' onClick={handleLogout}>Logout</button>
 
                     </div>                
