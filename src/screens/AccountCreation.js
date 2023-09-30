@@ -69,6 +69,8 @@ const AccountCreation = () => {
                 <option value="Savings Account">Savings Account</option>
                 <option value="FD Account">FD Account</option>
             </select>
+            {
+            (accountTypeSelected === 'Savings Account' || accountTypeSelected === 'FD Account') ?
             <form className="account-creation-form" onSubmit={handleAccountSelection}>
                 {
                     (accountTypeSelected === 'Savings Account') ?
@@ -117,6 +119,12 @@ const AccountCreation = () => {
                     
                 }
             </form>
+            :
+            <div>
+            </div>
+            }
+            
+            
         </div>
     )
 }

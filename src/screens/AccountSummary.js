@@ -78,7 +78,7 @@ const AccountSummary = () => {
                     return `<tr>
                         <td>${transaction.senderAcc.id}</td>
                         <td>${transaction.receiverAcc.id}</td>
-                        <td>${transaction.receiverAcc.id == selectedAccountNumber ? '+ ' : '- '}${transaction.amount}</td>
+                        <td>${transaction.receiverAcc.id == selectedAccountNumber ? `<span class="mi">+ ${transaction.amount}</span>` : `<span class="mo">- ${transaction.amount}</span>`}</td>
                         <td>${transaction.dateOfTransaction}</td>
                         <td>${transaction.status}</td>
                     </tr>`
