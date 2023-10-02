@@ -53,6 +53,12 @@ const AccountSummary = () => {
                         ${selectedAccountDetails[0].activationDate}
                         </td>
                     </tr>
+                    <tr>
+                        <td>Account Status</td>
+                        <td>
+                        ${selectedAccountDetails[0].accountStatus}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         `;

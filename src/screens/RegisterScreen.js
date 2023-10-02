@@ -89,12 +89,12 @@ const RegisterUser= () => {
             },
             account_details:{
                 depositAmount : parseInt(Number(depositAmount)),
-                creditCardNeeded : creditCardNeeded,
-                debitCardNeeded : debitCardNeeded,
+                hasCreditCard : creditCardNeeded,
+                hasDebitCard : debitCardNeeded,
             }
         })
         .then((response) => {
-            status_msg_div.innerHTML = `<p class='success-msg'>${response}</p>`;
+            status_msg_div.innerHTML = `<p class='success-msg'>${response.data}</p>`;
         }).catch(error => {
             status_msg_div.innerHTML = `<p class='error-msg'>${error}</p>`;
         });

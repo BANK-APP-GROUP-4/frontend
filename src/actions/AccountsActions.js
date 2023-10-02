@@ -57,10 +57,10 @@ export const AccountSummaryService = {
 };
 
 export const AccountStatementService = {
-  getAccountStatement: async (auth_token, id, fromDate, toDate) => {
+  getAccountStatement: async (auth_token, id, from, to) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/v1/transaction/last`, {
-      id, fromDate, toDate, k : 500
+    const response = await axios.post(`${BASE_URL}/api/v1/transaction/summary`, {
+      id, from, to
     }, {
       headers: {
         Authorization: `Bearer ${auth_token}`,
@@ -74,10 +74,10 @@ export const AccountStatementService = {
 };
 
 export const savingsAccountCreationService = {
-  savingsAccountCreation: async (auth_token, id, depositAmount, creditCardNeeded, debitCardNeeded) => {
+  savingsAccountCreation: async (auth_token, customerId, depositAmount, hasCreditCard, hasDebitCard) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/v1/account/savings/create`, {
-      id, depositAmount, creditCardNeeded, debitCardNeeded
+    const response = await axios.post(`${BASE_URL}/api/v1/account/savings`, {
+      customerId, depositAmount, hasCreditCard, hasDebitCard
     }, {
       headers: {
         Authorization: `Bearer ${auth_token}`,
@@ -91,10 +91,10 @@ export const savingsAccountCreationService = {
 }
 };
 export const fdAccountCreationService = {
-  fdAccountCreation: async (auth_token, id, principalAmount, maturityPeriod) => {
+  fdAccountCreation: async (auth_token, customerId, principalAmount, maturityPeriod) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/v1/account/fd/create`, {
-      id, principalAmount, maturityPeriod
+    const response = await axios.post(`${BASE_URL}/api/v1/account/fixed`, {
+      customerId, principalAmount, maturityPeriod
     }, {
       headers: {
         Authorization: `Bearer ${auth_token}`,

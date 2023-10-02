@@ -40,7 +40,7 @@ const AccountStatement = () => {
             else {
                 response = await AccountStatementService.getAccountStatement(auth_token, selectedAccountNumber, fromDate, toDate);
             }
-            const AccountStatementResponse = response.transactions; 
+            const AccountStatementResponse = response.transaction; 
             if (response.status === 'success') {
                 const accountSummaryRecentTransactionsCntr = document.querySelector('.account-summary-recent-transactions-cntr');
                 accountSummaryRecentTransactionsCntr.innerHTML = `

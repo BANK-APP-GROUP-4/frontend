@@ -25,11 +25,12 @@ const AccountCreation = () => {
             debitCardNeeded = (debitCardNeeded === 'true'); 
             savingsAccountCreationService.savingsAccountCreation(auth_token, customer_id, depositAmount, creditCardNeeded, debitCardNeeded)
             .then((response) => {
-                if(response.status === 'success') {
-                    status_msg_div.innerHTML = `<p class='success-msg'>${response.message}</p>`;
+                console.log(response);
+                if(response === 'Savings account successfully created.') {
+                    status_msg_div.innerHTML = `<p class='success-msg'>${response}</p>`;
                 }
                 else {
-                    status_msg_div.innerHTML = `<p class='error-msg'>${response.message}</p>`;
+                    status_msg_div.innerHTML = `<p class='error-msg'>${response}</p>`;
                 }
             }).catch(error => {
                 alert(error);
@@ -40,11 +41,11 @@ const AccountCreation = () => {
             maturityPeriod = parseInt(Number(maturityPeriod));
             fdAccountCreationService.fdAccountCreation(auth_token, customer_id, principalAmount, maturityPeriod)
             .then((response) => {
-                if(response.status === 'success') {
-                    status_msg_div.innerHTML = `<p class='success-msg'>${response.message}</p>`;
+                if(response === 'FD Account created successfully.') {
+                    status_msg_div.innerHTML = `<p class='success-msg'>${response}</p>`;
                 }
                 else {
-                    status_msg_div.innerHTML = `<p class='error-msg'>${response.message}</p>`;
+                    status_msg_div.innerHTML = `<p class='error-msg'>${response}</p>`;
                 }
             }).catch(error => {
                 alert(error);
@@ -64,6 +65,7 @@ const AccountCreation = () => {
         <div>
             <CustomerNavbar/>
             <h1>Account Creation</h1>
+            <div className='status_msg_div'></div>
             <select required onChange={populateAccountCreationForm}>
             <option>Select Account Type</option>
                 <option value="Savings Account">Savings Account</option>
@@ -107,7 +109,7 @@ const AccountCreation = () => {
                         <input 
                         onChange={(e) => setPrincipalAmount(e.target.value)}
                         type="number" name="principalAmount" required></input>
-                        <label>Maturity Period in [Months]</label>
+                        <label>Maturity Period in [Years]</label>
                         <input 
                         onChange={(e) => setMaturityPeriod(e.target.value)}
                         type="number" name="maturityPeriod" required></input>

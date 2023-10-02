@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Container, Typography, TextField, Button, Box } from "@mui/material";
 import axios from 'axios';
@@ -24,7 +24,6 @@ const AdminDashboard = () => {
             console.log(err);
         });
     }
-    handleAdminDashboardPopulation();
     const handleAccountActivation = (accNumber) => {
         const resp = axios.post(`http://localhost:8081/api/v1/admin/activate/${accNumber}`);
         const adminActionsResponseMessage = document.querySelector('.admin-actions-response-message');
@@ -74,6 +73,10 @@ const AdminDashboard = () => {
             console.log(err);
         });
     }
+    useEffect(() => {
+        handleAdminDashboardPopulation();
+    }
+    , []);
     return(
         <div className="admin-dashboard-container">
         <AdminNavbar />

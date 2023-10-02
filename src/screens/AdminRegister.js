@@ -77,7 +77,7 @@ const AdminLogin = () => {
                             color="success"
                             sx={{ marginTop: "20px", width: "60%", margin: "20px auto", fontSize: "1rem" }}
                         >
-                            Login
+                            Register
                         </Button>
                     </form>
                     <Typography variant="subtitle1" style={{ textAlign: "center" }}>
