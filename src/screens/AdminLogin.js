@@ -2,24 +2,39 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Typography, TextField, Button, Box } from "@mui/material";
 import Footer from "../components/Footer";
-
+import {AdminLoginService} from '../actions/AdminActions';
+import CustomerNavbar from "../components/CustomerNavbar";
 const AdminLogin = () => {
     if (localStorage.getItem('admin_token')) {
         window.location.href = '/admin/dashboard';
     }
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Add your login logic here
+        const resp = AdminLoginService.adminLogin(email, password);
+        resp.then((res) => {
+            console.log(res);
+            if (res === "Login success") {
+                localStorage.setItem('admin_token', true);
+                alert("Login success");
+                window.location.href = '/admin/dashboard';
+            } else {
+                alert("Something went wrong");
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
     };
 
     return (
-        <div
+        <div>
+        <CustomerNavbar />
+             <div
         style={{
             background: "linear-gradient(to bottom, #f0f8ff, #c2e9fb)",
-            minHeight: "100vh",
+            minHeight: "80vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -36,10 +51,18 @@ const AdminLogin = () => {
                     }}
                 >
                     <Typography variant="h3" style={{ fontWeight: "bold", marginBottom: "20px", marginTop: "20px" }}>
-                        Login
+                        Login Admin
                     </Typography>
                     <form onSubmit={handleLogin}>
-                    
+                    <TextField
+                            fullWidth
+                            label="Email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            sx={{ marginBottom: "1rem", width: "70%", height: "70%" }}
+                        />
                         <TextField
                             fullWidth
                             label="Password"
@@ -58,9 +81,13 @@ const AdminLogin = () => {
                             Login
                         </Button>
                     </form>
+                    <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+                        Don't have an account? <Link to="/admin/register">Register</Link>
+                    </Typography>
                 </Box>
-                <Footer />
             </Container>
+        </div>
+        <Footer />
         </div>
     );
 };

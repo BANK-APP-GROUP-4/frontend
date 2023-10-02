@@ -10,7 +10,6 @@ const AdminNavbar = () => {
         <div>
             
             <div className='customer-top-navbar' style={{background: "#c2e9fb", borderBottomColor: "white" }}>
-                
                     <Link className='site-logo-text' to="/" >
                     NeoFinTech
                     </Link>

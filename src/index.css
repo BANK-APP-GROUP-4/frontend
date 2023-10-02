@@ -217,7 +217,8 @@ body {
 
 
 
-.account-summary-details-table {
+.account-summary-details-table,
+.admin-accounts-table {
   border-collapse: collapse;
   text-align: center;
   font-size: 1.6rem;
@@ -227,22 +228,58 @@ body {
   border: 2px solid #000000;
 }
 
-.account-summary-details-table td {
+.account-summary-details-table td,
+.admin-accounts-table td {
   padding: 1rem 2rem;
   border-bottom: 1px solid #000000;
 }
 
-.account-summary-details-table tr {
+.account-summary-details-table tr,
+.admin-accounts-table tr {
   padding: 1rem 2rem;
   border-bottom: 1px solid #000000;
 }
 
-.account-summary-details-table tr:last-child {
+.account-summary-details-table tr:last-child,
+.admin-accounts-table tr:last-child {
   border-bottom: none;
 }
 
-.account-summary-details-table tr:nth-child(even) {
+.account-summary-details-table tr:nth-child(even),
+.admin-accounts-table tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+.admin-accounts-table table th {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #000000;
+}
+
+.admin-accounts-table {
+  margin: 5rem auto;
+  width: 80%;
+}
+
+.admin-accounts-table table {
+  width: 100%;
+}
+
+.admin-accounts-table table button {
+  width: 10rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.admin-accounts-table table button:hover {
+  background-color: #f93737;
+  color: #ffffff;
 }
 
 
@@ -543,4 +580,15 @@ label {
 .mo {
   color: #e33415;
   font-weight: 1200;
+}
+
+.admin-actions-response-message {
+  color: #fff;
+  padding: 0.5rem 4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  max-width: fit-content;
+  margin: 5rem auto;
 }

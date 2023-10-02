@@ -13,6 +13,7 @@ import AdminDashboard from './screens/AdminDashboard';
 import AdminLogin from './screens/AdminLogin';
 import NotFound from './components/NotFound';
 import AccountCreation from './screens/AccountCreation';
+import AdminRegister from './screens/AdminRegister';
 function App() {
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
         <Route path="/customer/reset-password" element={<ResetPassword />} />
         <Route path= "/customer/create-account" element = {<AccountCreation/>}/>
         <Route path= "/admin/login" element= {<AdminLogin/>}/>
+        <Route path= "/admin/register" element = {<AdminRegister/>}/>
         <Route path= "/admin/dashboard" element = {<AdminDashboard/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
